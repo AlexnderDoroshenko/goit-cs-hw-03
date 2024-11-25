@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo:latest  # Використовуємо офіційний образ MongoDB
+    container_name: mongo
+    ports:
+      - "27017:27017"  # Проксіруємо порти MongoDB (локальний порт 27017 на порт контейнера)
+    volumes:
+      - mongo_data:/data/db  # Персистентне сховище для даних MongoDB
+    networks:
+      - mongo_network
+
+volumes:
+  mongo_data:  # Створюємо об'єм для збереження даних MongoDB
+
+networks:
+  mongo_network:
+    driver: bridge

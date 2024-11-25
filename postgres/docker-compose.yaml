@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:13
+    container_name: db-container
+    environment:
+      POSTGRES_PASSWORD: 567234
+      POSTGRES_USER: postgres
+      POSTGRES_DB: hw03
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
+  
+networks:
+  app-network:
+    driver: bridge
